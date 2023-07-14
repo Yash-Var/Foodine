@@ -5,6 +5,12 @@ import { cards } from "./Config";
 // import Cards from "./Crads";
 const Body = () => {
   const [search, setSearch] = useState("");
+  const [searchData, setSearchData] = useState(cards);
+  const filterData = (Cards, Search) => {
+    console.log(Cards, Search);
+    return Cards.filter((e) => e.data.name.includes(Search));
+  };
+  console.log(searchData);
   return (
     <>
       <div className="search">
@@ -17,10 +23,18 @@ const Body = () => {
             setSearch(e.target.value);
           }}
         />
-        <button>Search</button>
+        <button
+          onClick={() => {
+            const data = filterData(searchData, search);
+            console.log(data);
+            setSearchData(data);
+          }}
+        >
+          Search
+        </button>
       </div>
       <div className="All-Cards">
-        {cards.map((e) => {
+        {searchData.map((e) => {
           //   console.log(e.data.cloudinaryImageId);
           return (
             <Crads
