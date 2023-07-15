@@ -9,7 +9,7 @@ const Cards = (props) => {
         className="card-image"
       />
       <h1>{name}</h1>
-      <div>{cuisines}</div>
+      <div>{cuisines.join(", ")}</div>
       <div>Star {rating}</div>
     </div>
   );
