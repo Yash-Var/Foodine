@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "./logo_image.png";
 import "../index.css";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [auth, setAuth] = useState(true);
   return (
@@ -11,10 +12,18 @@ const Navbar = () => {
         </div>
         <div>
           <ul className="navbar-list">
-            <li>Home</li>
-            <li>About</li>
-            <li>Cart</li>
-            <li>Contact</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/">Cart</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
           </ul>
         </div>
         <div>

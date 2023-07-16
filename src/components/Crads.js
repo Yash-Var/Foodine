@@ -11,6 +11,7 @@ const Cards = (props) => {
       <h1>{name}</h1>
       <div>{cuisines.join(", ")}</div>
       <div>Star {rating}</div>
+      {/* <div>{yash}</div> */}
     </div>
   );
 };

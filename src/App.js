@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
@@ -9,7 +10,8 @@ const App = () => {
       <div className="App">
         <Navbar />
         <hr></hr>
-        <Body />
+        <Outlet />
+        <hr></hr>
         <Footer />
       </div>
     </>

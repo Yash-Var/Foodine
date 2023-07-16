@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Crads from "./Crads";
 import "../index.css";
 import { cards } from "./Config";
+import Shimmmer from "./Shimmer";
+import { Link } from "react-router-dom";
 // import Cards from "./Crads";
 const Body = () => {
   const [search, setSearch] = useState("");
@@ -26,11 +28,7 @@ const Body = () => {
   useEffect(() => {
     getFetchdata();
   }, []);
-  return allSearchData?.length === 0 ? (
-    <>
-      <h1>Shimmer Ui.....</h1>
-    </>
-  ) : (
+  return (
     <>
       <div className="search">
         <input
@@ -52,28 +50,32 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="All-Cards">
-        {console.log(searchFilterData?.length)}
-        {searchFilterData?.length === 0 ? (
-          <>
-            <h1>restaurant does not found....</h1>
-            {console.log(searchFilterData?.length)}
-          </>
-        ) : (
-          searchFilterData.map((e) => {
-            //   console.log(e.data.cloudinaryImageId);
-            return (
-              <Crads
-                name={e.data.name}
-                img_id={e.data.cloudinaryImageId}
-                cuisines={e.data.cuisines}
-                rating={e.data.avgRating}
-                key={e.data.id}
-              />
-            );
-          })
-        )}
-      </div>
+      {allSearchData?.length === 0 ? (
+        <>
+          <Shimmmer />
+        </>
+      ) : (
+        <div className="All-Cards">
+          {searchFilterData?.length === 0 ? (
+            <>
+              <h1>restaurant does not found....</h1>
+            </>
+          ) : (
+            searchFilterData.map((e) => {
+              return (
+                <Link to={"/restaurant/" + e.data.id} key={e.data.id}>
+                  <Crads
+                    name={e.data.name}
+                    img_id={e.data.cloudinaryImageId}
+                    cuisines={e.data.cuisines}
+                    rating={e.data.avgRating}
+                  />
+                </Link>
+              );
+            })
+          )}
+        </div>
+      )}
     </>
   );
 };
